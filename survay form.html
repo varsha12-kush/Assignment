@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>Survey Form</title>
+    <style type="text/css">
+         body{
+             background-color: lightblue;
+        }   
+        .form-control{
+            text-align: left
+            margin-bottom: 25px;  
+            margin-top: 10px; 
+         }
+         
+         form{
+             margin: 10px auto;
+             padding: 30px 30px;
+             max-width: 350px;
+             background-color: white;
+        }
+
+        .form-control input,
+        .form-control select,
+        .form-control textarea,
+             
+               
+
+      </style> 
+ </head>
+ <body>
+ <h1 style="text-align:center;">Survey Form</h1>
+
+ <form style="text-align: left;">
+      <fieldset>  
+      <div class="form-control">  
+      <label style="display: block; margin-bottom: 10px">First Name:</label>
+      <input type="text" name="firstName" placeholder="Enter your name">
+      </div>
+     
+      <div class="form-control">  
+      <label style="display: block; margin-bottom: 10px">Last Name:</label>
+      <input type="text" name="lastName" placeholder="Enter your name">
+      </div>
+
+       <div class="form-control">  
+       <label style="display: block; margin-bottom: 10px">Date of Birth:</label>
+       <input type="date" name="dob" placeholder="Enter your name">      
+       </div>
+                
+        <div class="form-control">
+        <label style="display: block; margin-bottom: 10px">Country:</label>
+        <select>
+                 <option value="USA">USA</option>
+                 <option value="Canada">Canada</option>
+                 <option value="UK">UK</option>
+                 <option value="Other">Other</option>
+          </select>
+          </div>
+
+        <div class="form-control"> 
+        <label style="display: block; margin-bottom: 10px">Date of Birth:</label>
+        <input type="checkbox" id="male" name="gender" value="male">
+        <label style="male">Male</label>
+        <input type="checkbox" id="female" name="gender" value="female">
+        <label style="female">Female</label><br>
+
+
+        <div class="form-control">  
+        <label style="display: block; margin-bottom: 10px">profession:</label>
+        <input style="text" name="profession">      
+        </div> 
+        
+        <div class="form-control"> 
+        <label style="display: block; margin-bottom: 10px">Email:</label>
+        <input type="email" name="email">
+        </div> 
+
+        <div class="form-control"> 
+        <label style="display: block; margin-bottom: 10px">Mobile Number:</label>
+        <input type="tel" name="mobile">
+        </div> 
+
+        <div class="form-control"> 
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dob = document.getElementById('dob').value;
+            var country = document.getElementById('country').value;
+            var gender = Array.from(document.querySelectorAll('input[name=gender]:checked')).map(e => e.value);
+            var profession = document.getElementById('profession').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+
+            // Display popup with selected values
+            var popupText = "First Name: " + firstName + "\n" +
+                            "Last Name: " + lastName + "\n" +
+                            "Date of Birth: " + dob + "\n" +
+                            "Country: " + country + "\n" +
+                            "Gender: " + gender.join(", ") + "\n" +
+                            "Profession: " + profession + "\n" +
+                            "Email: " + email + "\n" +
+                            "Mobile Number: " + mobile;
+
+            alert(popupText);
+
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
